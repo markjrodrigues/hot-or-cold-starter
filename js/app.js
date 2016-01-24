@@ -14,6 +14,9 @@ $(document).ready(function(){
 		// Reset the answer if requested
 		$(".new").click(function(){
 			resetAnswer();
+			$("#feedback").text("Make your Guess!");
+			$("#userGuess").val("");
+			$("#count").text("0");
   	});
 
 		// William: Is this the right way to add the submit?
@@ -45,19 +48,23 @@ $(document).ready(function(){
 			}
 			else if (diff <= 5)
 			{
-				$("#feedback").text("very hot");
+				$("#feedback").text("Very hot");
 			}
 			else if (diff <= 10)
 			{
-				$("#feedback").text("hot");
+				$("#feedback").text("Hot");
 			}
 			else if (diff <= 20)
 			{
-				$("#feedback").text("warm");
+				$("#feedback").text("Warm");
 			}
 			else {
-				$("#feedback").text("cold");
+				$("#feedback").text("Cold");
 			}
+
+			// William, is there a more elegant where to do this?
+			$("#count").text(parseInt($("#count").text()) + 1);
+			$("#guessList" ).append( "<li>" + guess + "</li>" );
 		}
 
 		// Last thing to do is to start the ball rolling
